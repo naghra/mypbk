@@ -3,8 +3,9 @@ import { Heart, Share2, CheckCircle, Minus, Plus, ShoppingCart } from "lucide-re
 import { supabase } from "@/integrations/supabase/client";
 import LoginModal from "@/components/LoginModal";
 import CheckoutModal from "@/components/CheckoutModal";
-import AntibotDescription from "@/components/AntibotDescription";
+
 import InlineOrderForm from "@/components/InlineOrderForm";
+import AntibotDescription from "@/components/AntibotDescription";
 import fallbackImage from "@/assets/product-main.jpg";
 import SaveBadge from "@/components/SaveBadge";
 import barcodeIcon from "@/assets/barcode-icon.png";
@@ -115,19 +116,9 @@ const ProductDetails = ({ productSlug, onProductLoaded }: { productSlug?: string
   const savings = compareAtPrice > price ? compareAtPrice - price : 0;
   const skuCode = product?.sku || "7287120302040";
   const inStock = product ? product.inventory > 0 : true;
-  const isAntibot = product?.tags?.includes("antibot");
+  const isAntibot = product?.tags?.includes("antibot") ?? false;
 
-  // Resolve product handle for API: use first non-"antibot" tag, or sku, or id
-  const productHandle = product?.tags?.find((t) => t && t !== "antibot") || product?.sku || product?.id || "default";
 
-  // Default description as fallback
-  const defaultDescriptionContent = (
-    <div
-      dangerouslySetInnerHTML={{
-        __html: `<p><img src="https://cdn.shopify.com/s/files/1/0732/0833/2333/files/IMG_2995_1_1.png?v=1770241826" alt="" style="max-width:100%;height:auto;" /></p>`,
-      }}
-    />
-  );
 
   const renderNonAntibotDescription = () => {
     const desc = product?.description_ar;
@@ -231,8 +222,12 @@ const ProductDetails = ({ productSlug, onProductLoaded }: { productSlug?: string
         <div className="mb-5">
           {isAntibot ? (
             <AntibotDescription
-              productHandle={productHandle}
-              defaultDescription={defaultDescriptionContent}
+              productHandle={product?.tags?.find(t => t !== "antibot") || product?.id || ""}
+              defaultDescription={
+                <article className={`relative overflow-hidden transition-all duration-300 ${showFullDescription ? "max-h-[2000px]" : "max-h-[200px]"}`}>
+                  {renderNonAntibotDescription()}
+                </article>
+              }
             />
           ) : (
             <>
