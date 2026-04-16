@@ -1,0 +1,183 @@
+@import url('https://cdn.salla.network/fonts/pingarlt.css?v=2.0.5');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-main: 'PingARLT', sans-serif;
+    --color-primary: 0 0% 0%;
+    --bg-primary: 0 0% 100%;
+    --bg-secondary: 0 0% 100%;
+    --header-bg: 0 0% 100%;
+    --header-text-color: 33 48% 47%;
+    --store-text-primary: 221 39% 11%;
+    --store-text-secondary: 0 0% 61%;
+    --product-bg: 0 0% 100%;
+    --footer-bg: 220 14% 96%;
+    --footer-text-color: 233 19% 28%;
+    --product-border-color: 0 0% 93%;
+    
+    --background: 0 0% 100%;
+    --foreground: 221 39% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 221 39% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 39% 11%;
+    --primary: 0 0% 0%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 220 14% 96%;
+    --secondary-foreground: 221 39% 11%;
+    --muted: 220 14% 96%;
+    --muted-foreground: 0 0% 61%;
+    --accent: 33 48% 47%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 93%;
+    --input: 0 0% 93%;
+    --ring: 0 0% 0%;
+    --radius: 0.375rem;
+    --sale-color: 0 70% 65%;
+
+    --sidebar-background: 228 24% 12%;
+    --sidebar-foreground: 220 20% 80%;
+    --sidebar-primary: 250 80% 65%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 228 20% 18%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 228 20% 20%;
+    --sidebar-ring: 250 80% 65%;
+
+    --admin-gradient-start: 250 80% 65%;
+    --admin-gradient-end: 340 75% 55%;
+    --admin-card-bg: 0 0% 100%;
+    --admin-card-border: 220 20% 92%;
+    --admin-glow: 250 80% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-main);
+    direction: rtl;
+  }
+}
+
+/* Store-specific utilities */
+@layer components {
+  .store-bg {
+    background-color: hsl(var(--bg-primary));
+  }
+  .text-store-primary {
+    color: hsl(var(--store-text-primary));
+  }
+  .text-store-secondary {
+    color: hsl(var(--store-text-secondary));
+  }
+  .text-header-color {
+    color: hsl(var(--header-text-color));
+  }
+  .bg-store-secondary {
+    background-color: hsl(var(--secondary));
+  }
+  .text-sale {
+    color: hsl(var(--sale-color));
+  }
+  .bg-footer {
+    background-color: hsl(var(--footer-bg));
+  }
+  .text-footer {
+    color: hsl(var(--footer-text-color));
+  }
+}
+
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.04); }
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(200%) skewX(-12deg); }
+}
+
+/* Admin dashboard premium styles */
+@layer components {
+  .admin-card {
+    @apply relative overflow-hidden rounded-2xl border border-border bg-card p-6;
+    background: linear-gradient(135deg, hsl(var(--admin-card-bg)) 0%, hsl(220 20% 98%) 100%);
+    box-shadow: 0 1px 3px hsl(var(--admin-glow) / 0.04), 0 8px 24px hsl(220 20% 50% / 0.06);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+  .admin-card:hover {
+    box-shadow: 0 2px 8px hsl(var(--admin-glow) / 0.08), 0 12px 32px hsl(220 20% 50% / 0.1);
+    transform: translateY(-1px);
+  }
+  .admin-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, hsl(var(--admin-gradient-start)), hsl(var(--admin-gradient-end)));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .admin-card:hover::before {
+    opacity: 1;
+  }
+  .admin-input {
+    @apply rounded-xl border-border bg-background px-4 py-3 text-sm transition-all duration-200;
+    box-shadow: 0 1px 2px hsl(220 20% 50% / 0.04);
+  }
+  .admin-input:focus {
+    box-shadow: 0 0 0 3px hsl(var(--admin-glow) / 0.12), 0 1px 2px hsl(220 20% 50% / 0.06);
+  }
+  .admin-gradient-btn {
+    background: linear-gradient(135deg, hsl(var(--admin-gradient-start)), hsl(var(--admin-gradient-end)));
+    @apply text-white font-semibold rounded-xl px-8 py-3 transition-all duration-300;
+    box-shadow: 0 4px 14px hsl(var(--admin-gradient-start) / 0.35);
+  }
+  .admin-gradient-btn:hover {
+    transform: translateY(-1px) scale(1.02);
+    box-shadow: 0 6px 20px hsl(var(--admin-gradient-start) / 0.45);
+  }
+  .admin-gradient-btn:active {
+    transform: translateY(0) scale(0.99);
+  }
+  .admin-icon-box {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center;
+    background: linear-gradient(135deg, hsl(var(--admin-gradient-start) / 0.12), hsl(var(--admin-gradient-end) / 0.08));
+    color: hsl(var(--admin-gradient-start));
+  }
+  .admin-glass-nav {
+    background: hsl(var(--admin-card-bg) / 0.8);
+    backdrop-filter: blur(16px) saturate(180%);
+    -webkit-backdrop-filter: blur(16px) saturate(180%);
+    border-bottom: 1px solid hsl(var(--admin-card-border));
+  }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+/* Product card shadows */
+.product-card-shadow {
+  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04), 0 4px 12px hsl(var(--foreground) / 0.03);
+}
+.product-card-shadow-hover,
+.group:hover .product-card-shadow {
+  box-shadow: 0 4px 16px hsl(var(--foreground) / 0.08), 0 12px 32px hsl(var(--foreground) / 0.06);
+}

@@ -1,0 +1,3 @@
+ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS ip_address TEXT;
+ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS ip_country TEXT;
+ALTER TABLE public.orders ADD COLUMN IF NOT EXISTS ip_city TEXT;

@@ -1,0 +1,1 @@
+ALTER TABLE public.orders ADD COLUMN cod_network_data jsonb DEFAULT NULL;
