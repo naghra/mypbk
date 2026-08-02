@@ -1,1 +1,0 @@
-ALTER TABLE public.products ADD COLUMN hidden_from_home boolean NOT NULL DEFAULT false;

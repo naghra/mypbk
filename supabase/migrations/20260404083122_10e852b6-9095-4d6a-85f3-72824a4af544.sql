@@ -1,1 +1,0 @@
-ALTER TABLE public.products ADD COLUMN snapchat_conversion_value numeric DEFAULT NULL;

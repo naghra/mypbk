@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-emerald-brand: #10b981;
+  --color-gold: #d4a017;
+  --font-sans: var(--font-body);
+  --font-display: var(--font-display);
+  --font-arabic: var(--font-arabic);
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --muted: #f0fdf4;
+  --muted-foreground: #475569;
+  --accent-emerald: #10b981;
+  --accent-gold: #d4a017;
+  --ring: #10b981;
+  --hero-glow: rgba(16, 185, 129, 0.18);
+  --hero-gold: rgba(212, 160, 23, 0.16);
+}
+
+.dark {
+  --background: #020617;
+  --foreground: #f8fafc;
+  --muted: #022c22;
+  --muted-foreground: #94a3b8;
+  --hero-glow: rgba(16, 185, 129, 0.22);
+  --hero-gold: rgba(212, 160, 23, 0.12);
+}
+
+* {
+  border-color: color-mix(in oklab, var(--accent-emerald) 18%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(1200px 600px at 10% -10%, var(--hero-glow), transparent 55%),
+    radial-gradient(900px 500px at 90% 0%, var(--hero-gold), transparent 50%),
+    linear-gradient(180deg, color-mix(in oklab, var(--muted) 70%, white), var(--background) 40%);
+  color: var(--foreground);
+  font-family: var(--font-body), var(--font-arabic), ui-sans-serif, sans-serif;
+  min-height: 100vh;
+}
+
+.dark body {
+  background:
+    radial-gradient(1000px 500px at 15% -10%, var(--hero-glow), transparent 55%),
+    radial-gradient(800px 420px at 90% 0%, var(--hero-gold), transparent 45%),
+    linear-gradient(180deg, #020617, #03160f 50%, #020617);
+}
+
+.font-display {
+  font-family: var(--font-display), var(--font-arabic), ui-serif, Georgia, serif;
+}
+
+[dir="rtl"] body {
+  font-family: var(--font-arabic), var(--font-body), ui-sans-serif, sans-serif;
+}
+
+[dir="rtl"] .font-display {
+  font-family: var(--font-arabic), var(--font-display), ui-serif, serif;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--accent-emerald) 35%, white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ring);
+  outline-offset: 2px;
+}
+
+.pattern-mesh {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(16, 185, 129, 0.08) 0 1px, transparent 1px),
+    radial-gradient(circle at 80% 40%, rgba(212, 160, 23, 0.08) 0 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.safe-bottom {
+  padding-bottom: max(1rem, env(safe-area-inset-bottom));
+}

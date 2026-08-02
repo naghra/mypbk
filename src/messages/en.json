@@ -1,0 +1,128 @@
+{
+  "brand": "Mithaq",
+  "tagline": "Marriage with intention. Communication with respect.",
+  "nav": {
+    "discover": "Discover",
+    "matches": "Matches",
+    "messages": "Messages",
+    "search": "Search",
+    "profile": "Profile",
+    "likes": "Likes",
+    "premium": "Premium",
+    "notifications": "Notifications",
+    "settings": "Settings",
+    "verification": "Verification",
+    "admin": "Admin",
+    "login": "Sign in",
+    "register": "Create account",
+    "logout": "Sign out"
+  },
+  "landing": {
+    "headline": "Find your spouse, the halal way",
+    "sub": "A private, respectful platform built for Muslims ready for nikah — not casual dating.",
+    "cta": "Begin with intention",
+    "ctaSecondary": "I already have an account",
+    "valuesTitle": "Built for serious marriage",
+    "value1Title": "Mutual interest only",
+    "value1Body": "Messaging unlocks after both people express interest. No pressure, no games.",
+    "value2Title": "Verified & moderated",
+    "value2Body": "ID checks, selfie verification, and AI moderation keep the community safe and sincere.",
+    "value3Title": "Faith-aligned matching",
+    "value3Body": "Religious commitment, prayer habits, and lifestyle values shape every compatibility score."
+  },
+  "auth": {
+    "loginTitle": "Welcome back",
+    "loginSubtitle": "Sign in to continue your marriage journey",
+    "registerTitle": "Create your Mithaq account",
+    "registerSubtitle": "Serious intentions only. Email verification is required.",
+    "email": "Email",
+    "password": "Password",
+    "confirmPassword": "Confirm password",
+    "fullName": "Full name",
+    "phone": "Phone number",
+    "continueGoogle": "Continue with Google",
+    "continueApple": "Continue with Apple",
+    "continuePhone": "Continue with phone OTP",
+    "forgot": "Forgot password?",
+    "noAccount": "New here?",
+    "hasAccount": "Already registered?",
+    "verifyEmail": "Verify your email",
+    "verifyEmailBody": "We sent a verification link to your inbox. Please confirm before discovering matches."
+  },
+  "discover": {
+    "title": "Discover",
+    "interested": "Interested",
+    "skip": "Skip",
+    "compatibility": "Compatibility",
+    "verified": "Verified",
+    "empty": "No more profiles right now. Adjust filters or check back soon.",
+    "likesLeft": "{count} interests left today"
+  },
+  "matches": {
+    "title": "Your matches",
+    "empty": "When interest is mutual, matches appear here.",
+    "message": "Message"
+  },
+  "messages": {
+    "title": "Messages",
+    "placeholder": "Write a respectful message…",
+    "send": "Send",
+    "locked": "Messaging is only available after mutual interest.",
+    "blockedContent": "This message was blocked by moderation.",
+    "empty": "Select a match to start a conversation."
+  },
+  "profile": {
+    "title": "Profile",
+    "edit": "Edit profile",
+    "bio": "About",
+    "lookingFor": "Looking for",
+    "interests": "Interests",
+    "religious": "Religious commitment",
+    "prayer": "Prayer",
+    "completePrompt": "Complete your profile to appear in discovery."
+  },
+  "search": {
+    "title": "Search",
+    "filters": "Filters",
+    "apply": "Apply filters",
+    "reset": "Reset"
+  },
+  "premium": {
+    "title": "Mithaq Premium",
+    "free": "Free",
+    "premium": "Premium",
+    "unlimitedLikes": "Unlimited interests",
+    "seeLikes": "See who is interested in you",
+    "advancedFilters": "Advanced filters",
+    "priority": "Priority profile",
+    "readReceipts": "Read receipts",
+    "cta": "Upgrade with intention"
+  },
+  "safety": {
+    "report": "Report",
+    "block": "Block",
+    "reportSuccess": "Report submitted. Our team will review it.",
+    "blockSuccess": "User blocked."
+  },
+  "admin": {
+    "title": "Admin",
+    "users": "Users",
+    "reports": "Reports",
+    "analytics": "Analytics",
+    "verifications": "Verifications",
+    "moderation": "Moderation",
+    "subscriptions": "Subscriptions",
+    "logs": "Logs"
+  },
+  "common": {
+    "loading": "Loading…",
+    "save": "Save",
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "back": "Back",
+    "error": "Something went wrong",
+    "success": "Saved",
+    "years": "years",
+    "optional": "Optional"
+  }
+}
