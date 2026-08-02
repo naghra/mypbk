@@ -17,17 +17,17 @@ export function SiteHeader() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Link href="/" className="font-display text-3xl font-semibold text-emerald-700 dark:text-emerald-300 sm:text-4xl">
+          <Link href="/" className="font-display text-3xl font-semibold text-white drop-shadow-sm sm:text-4xl">
             {t("brand")}
           </Link>
         </motion.div>
         <div className="flex items-center gap-2">
           <LocaleToggle />
           <ThemeToggle />
-          <Button asChild variant="ghost" className="hidden sm:inline-flex">
+          <Button asChild variant="ghost" className="hidden text-white hover:bg-white/10 hover:text-white sm:inline-flex">
             <Link href="/login">{t("nav.login")}</Link>
           </Button>
-          <Button asChild>
+          <Button asChild variant="soft">
             <Link href="/register">{t("nav.register")}</Link>
           </Button>
         </div>

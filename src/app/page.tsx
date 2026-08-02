@@ -32,16 +32,17 @@ export default function LandingPage() {
             className="object-cover"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/30 dark:from-slate-950 dark:via-slate-950/90 dark:to-slate-950/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-950/75 via-slate-950/45 to-emerald-950/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-slate-950/50 via-transparent to-slate-950/30" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-center px-4 pb-20 pt-28 sm:px-6">
+        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-4 pb-24 pt-28 sm:justify-center sm:px-6">
           <motion.p
             custom={0}
             variants={fade}
             initial="hidden"
             animate="show"
-            className="font-display text-5xl font-semibold tracking-tight text-emerald-700 dark:text-emerald-300 sm:text-7xl"
+            className="font-display text-5xl font-semibold tracking-tight text-emerald-300 sm:text-7xl"
           >
             {t("brand")}
           </motion.p>
@@ -50,7 +51,7 @@ export default function LandingPage() {
             variants={fade}
             initial="hidden"
             animate="show"
-            className="mt-4 max-w-2xl font-display text-3xl font-medium leading-tight text-slate-900 dark:text-white sm:text-5xl"
+            className="mt-4 max-w-2xl font-display text-3xl font-medium leading-tight text-white sm:text-5xl"
           >
             {t("landing.headline")}
           </motion.h1>
@@ -59,7 +60,7 @@ export default function LandingPage() {
             variants={fade}
             initial="hidden"
             animate="show"
-            className="mt-4 max-w-xl text-base leading-relaxed text-slate-600 dark:text-slate-300 sm:text-lg"
+            className="mt-4 max-w-xl text-base leading-relaxed text-white/85 sm:text-lg"
           >
             {t("landing.sub")}
           </motion.p>
@@ -73,7 +74,7 @@ export default function LandingPage() {
             <Button asChild size="lg">
               <Link href="/register">{t("landing.cta")}</Link>
             </Button>
-            <Button asChild size="lg" variant="outline">
+            <Button asChild size="lg" variant="soft">
               <Link href="/login">{t("landing.ctaSecondary")}</Link>
             </Button>
           </motion.div>
