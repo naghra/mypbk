@@ -1,73 +1,92 @@
-# Welcome to your Lovable project
+# Mithaq — Halal Islamic Marriage Platform
 
-## Project info
+Mithaq is a production-oriented Next.js 15 app for serious Muslim marriage (nikah). It intentionally avoids casual dating patterns: discovery uses **Interested / Skip**, messaging unlocks only after **mutual interest**, messages do not disappear, and explicit image sharing in chat is blocked.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## Stack
 
-## How can I edit this code?
+- Next.js 15 (App Router) + TypeScript
+- Tailwind CSS v4 + shadcn/ui-style components
+- Supabase (Auth, PostgreSQL, Storage, Realtime-ready)
+- Prisma ORM
+- React Hook Form + Zod
+- Framer Motion
+- next-themes (dark mode)
+- EN / AR with RTL support
+- Vercel-ready
 
-There are several ways of editing your application.
+## Features
 
-**Use Lovable**
+- Auth: email/password, Google, Apple, phone OTP, mandatory email verification
+- Profiles: full matrimonial fields, photos, preferences
+- Verification: government ID + selfie, verified badge, AI fake heuristics
+- Matching: religious, interest, lifestyle, personality, education, age scoring
+- Discovery: Interested / Skip (no left/right swipe culture)
+- Messaging: mutual interest only, AI text moderation, no disappearing messages
+- Safety: report, block, spam/fake heuristics, content filtering
+- Search: country, city, age, and premium advanced filters
+- Notifications: in-app (+ hooks for email/push)
+- Subscriptions: Free limited likes / Premium unlimited + who liked you + advanced filters + priority + read receipts
+- Admin: users, reports, analytics, verifications, moderation, subscriptions, logs
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+## Getting started
 
-Changes made via Lovable will be committed automatically to this repo.
-
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+```bash
+npm install
+cp .env.example .env.local
+# Fill Supabase + DATABASE_URL + DIRECT_URL
+npx prisma generate
+npx prisma db push
+# Or apply SQL: supabase/migrations/20260802090000_mithaq_schema.sql
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+Open [http://localhost:3000](http://localhost:3000).
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+### Supabase setup
 
-**Use GitHub Codespaces**
+1. Create a project and enable Email, Google, Apple, and Phone providers.
+2. Set Auth redirect URL to `https://your-domain/auth/callback`.
+3. Run the SQL migration (includes RLS + storage buckets).
+4. Copy project URL, anon key, service role key, and Postgres connection strings into `.env.local`.
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Scripts
 
-## What technologies are used for this project?
+| Command | Description |
+|---|---|
+| `npm run dev` | Dev server (Turbopack) |
+| `npm run build` | Prisma generate + production build |
+| `npm start` | Start production server |
+| `npm run lint` | ESLint |
+| `npm run db:push` | Push Prisma schema |
+| `npm run db:studio` | Prisma Studio |
 
-This project is built with:
+## Architecture
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+```
+src/
+  app/                # App Router pages + REST route handlers
+  components/         # UI, layout, discover, auth, admin
+  lib/
+    auth/             # Session + user bootstrap
+    matching/         # Compatibility scoring
+    moderation/       # Text moderation + fake heuristics
+    security/         # Rate limit + CSRF helpers
+    supabase/         # Browser/server/admin clients
+    validations/      # Zod schemas
+    i18n/             # Locale helpers
+prisma/schema.prisma  # Normalized PostgreSQL schema
+supabase/migrations/  # SQL + RLS policies
+```
 
-## How can I deploy this project?
+## Security notes
 
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+- Supabase JWT session via `@supabase/ssr`
+- Row Level Security policies in SQL migration
+- Rate limiting on auth, interests, messages, reports
+- Secure upload MIME/size checks
+- Security headers in `next.config.ts`
+- Admin routes require `ADMIN` / `MODERATOR` role
 
-## Can I connect a custom domain to my Lovable project?
+## Deploy
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+Deploy on Vercel, set all env vars from `.env.example`, and point Supabase Auth redirects at your production domain.
